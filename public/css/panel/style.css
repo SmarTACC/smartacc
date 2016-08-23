@@ -1,0 +1,543 @@
+/* general */
+
+body {
+  word-wrap: break-word;
+}
+
+.btn {
+  background-color: #C10000 !important;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.display {
+  display: block;
+}
+
+.no-display {
+  display: none;
+}
+
+.no-display-imp {
+  display: none !important;
+}
+
+.white-text-input:-webkit-autofill,
+.white-text-input:-webkit-autofill:hover,
+.white-text-input:-webkit-autofill:focus,
+.white-text-input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: white;
+}
+
+.black-text-input:-webkit-autofill,
+.black-text-input:-webkit-autofill:hover,
+.black-text-input:-webkit-autofill:focus,
+.black-text-input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: black;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: black;
+}
+
+label {
+  margin-left: -11px;
+}
+
+.row {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media screen and (min-width: 992px) {
+  html {
+    background-color: #EEE;
+  }
+}
+
+.input-field {
+  padding: 0 !important;
+}
+
+/* containers */
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#search-container,
+#suggest-container {
+  margin: 40px 35% 20px 35%;
+  width: 30%;
+}
+
+#recipe-container {
+  text-align: left;
+  height: auto;
+  width: 90%;
+  margin-left: 5%;
+  overflow: auto;
+  padding-bottom: 10%;
+}
+
+#login-container,
+#credits-container,
+#suggest-success-container {
+  margin: 40px 15% 20px 15%;
+  width: 70%;
+}
+
+#search-container {
+  margin-top: 80px;
+}
+
+@media screen and (max-width: 992px) {
+  #search-container,
+  #suggest-container,
+  #credits-container {
+    margin: 20px 8% 20px 8%;
+    width: 84%;
+  }
+}
+
+#recipe-title {
+  text-shadow: -1px -1px #000000;
+}
+
+/* navbar & tabs */
+
+.nav-title {
+  margin-left: 16px;
+}
+
+.nav-wrapper {
+  background-color: #C10000 !important;
+}
+
+.navbar-buttons> li> a {
+  font-size: 1.2em;
+}
+
+.back-button> i {
+  float: left;
+  margin-left: 13px;
+  margin-right: 13px;
+}
+
+.nav-subtitle {
+  position: absolute;
+  color: #fff;
+  display: inline-block;
+  font-size: 1.7rem;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.brand-logo {
+  font-size: 1.7rem !important;
+}
+
+@media only screen and (max-width: 992px) {
+  nav .brand-logo {
+    left: 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  .button-collapse {
+    display: none;
+  }
+  #credits-li,
+  #login-li,
+  #logout-li {
+    display: block;
+    float: right;
+    margin-right: 16px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .nav-other-titles {
+    display: none !important;
+  }
+  #nav-title {
+    display: block !important;
+  }
+}
+
+#tabs-container {
+  margin-bottom: 50px !important;
+}
+
+#tabs {
+  overflow-x: hidden;
+  background-color: #F0F0F0;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.tab> a {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.indicator {
+  background-color: #C10000 !important;
+  height: 6px !important;
+}
+
+@media only screen and (min-width: 992px) {
+  #tabs-container {
+    display: none;
+  }
+}
+
+
+/* credits */
+
+.credits-title {
+  font-size: 2.1rem;
+}
+
+.credits-text-block {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.credits-text-block> p {
+  font-size: 1.2rem;
+  margin: 2px;
+}
+
+.credits-text-block> p:first-child {
+  font-size: 1.64rem;
+}
+
+#credits-container-images {
+  max-width: 600px;
+  margin: auto;
+  overflow: auto;
+}
+
+#credits-container-images> div {
+  float: left;
+}
+
+#credits-container-images> div> img {
+  width: 100%;
+}
+
+#credits-tic {
+  width: 25%;
+}
+
+#credits-ort {
+  width: 40%;
+  margin: 6px 5% 20px 5%;
+}
+
+#credits-medios {
+  width: 25%;
+  margin-top: 2px;
+}
+
+
+/* places.index */
+
+.categories-container {
+  margin-top: 0.5rem;
+  padding: 0 15px !important;
+}
+
+.categories-container> .select-wrapper> ul> li:last-child> span> label {
+  display: none;
+}
+
+.categories-container> .select-wrapper> ul> li:last-child> span {
+  font-weight: bold;
+}
+
+
+/* recipes.index */
+
+.content-wall {
+  position: relative;
+  display: block;
+}
+
+.title-wall {
+  font-size: 1.64rem;
+  margin-top: 0;
+  display: inline;
+  vertical-align: top;
+}
+
+.image-wall {
+  width: 75px;
+  height: 75px;
+}
+
+.category-grid-item {
+  text-align: center;
+  height: 120px;
+}
+
+.category-grid-item> .title-wall {
+  margin-bottom: 0;
+  position: relative;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 26px;
+  line-height: 130%;
+}
+
+.grid-item {
+  width: 100%;
+  padding: 18px;
+  background-color: #FFF;
+  border-radius: 5px;
+  margin: 1%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  cursor: pointer;
+}
+
+.container-title-wall,
+.image-wall {
+  float: left;
+}
+
+.inline-title-wall {
+  display: inline-block;
+  padding-left: 16px;
+}
+
+.wrap-title-wall {
+  display: table;
+  height: 60px;
+}
+
+.wrap-title-wall> .title-wall {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.title-wall {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  padding-right: 12px;
+}
+
+@media screen and (max-width: 992px) {
+  .grid {
+    margin: 0;
+  }
+  .grid-item {
+    margin: 0;
+    width: 100%;
+    padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #BDBDBD;
+  }
+  .grid:first-child {
+    border: 0;
+  }
+  .image-wall {
+    height: 60px;
+    width: 60px;
+    float: left;
+  }
+  .container-title-wall {
+    float: left;
+    padding: 17px 0 17px 15px;
+  }
+  .title-wall {
+    padding-left: 12px;
+    padding-right: 8px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .grid-item {
+    width: 31%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .grid-item {
+    width: 23%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .grid-item {
+    width: 18%;
+  }
+}
+
+
+/* recipes.show */
+
+#recipe-title {
+  text-align: center;
+  font-size: 2.92rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.recipe-subtitle {
+  margin-bottom: 2px;
+  font-size: 1.84rem;
+}
+
+.recipe-text {
+  margin: 0;
+  font-size: 1.44rem;
+}
+
+#recipe-image {
+  width: 100%;
+}
+
+.rating-star {
+  display: inline;
+  cursor: pointer;
+  font-size: 2.28rem;
+  float: left;
+}
+
+.rating-star-maps {
+  font-size: 1.2rem;
+}
+
+#starMessage {
+  float: left;
+  margin-top: 12px;
+  margin-left: 15px;
+}
+
+#stars {
+  margin-top: 10px;
+  float: left;
+}
+
+/* recipes.search */
+
+.search-text {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#recipe-name {
+  margin-bottom: 40px;
+}
+
+.tags-container,
+.ingredients-container {
+  margin-bottom: 30px;
+}
+
+
+/* suggestion.create */
+
+#suggest-success-container> p {
+  font-size: 2.28rem;
+}
+
+
+/* auth.login */
+
+.blue {
+  background-color: #2196F3 !important;
+}
+
+#login-google-button> img {
+  float: left;
+  width: 17px;
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+#login-google-button,
+#login-email-button {
+  width: 320px;
+  margin-top: 15px;
+}
+
+#no-account {
+  margin-top: 30px;
+}
+
+.white {
+  background-color: #fff !important;
+  color: #000;
+}
+
+#login-email,
+#login-password,
+#register-name,
+#register-email,
+#register-password {
+  width: 300px;
+  margin: 0 auto;
+}
+
+#register-name {
+  margin-top: 35px;
+}
+
+#register-email {
+  margin-top: 20px;
+}
+
+#register-password {
+  margin-top: 20px;
+}
+
+#register-button {
+  margin-top: 30px;
+}
+
+#login-email {
+  margin-top: 35px;
+}
+
+#login-password {
+  margin-top: 20px;
+}
+
+#login-button {
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 992px) {
+  #login-email,
+  #login-password {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
