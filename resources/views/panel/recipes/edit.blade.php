@@ -42,10 +42,8 @@
           @endforeach
         </div>
         <select multiple="multiple" name="ingredients[]" id="ingredientTokenize" class="tokenize-sample ingredient-tokenize">
-          {!! $i = 0; !!}
           @foreach ($allIngredients as $ingredient)
-            <p id="amount_{{ $i }}">{{ $recipeIngredient->ingredient->name }}</p>
-            {!! $i++; !!}
+            <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
           @endforeach
         </select>
       </div>
@@ -103,12 +101,10 @@
         {!! Form::text('total_values', null, ['id' => 'total_values']) !!}
       </div>
     </div>
-    @if (file_exists(public_path('img/recipes/' . $recipe->id . '.jpg')))
-      <div class="section no-overflow-section">
-        <h5>Imagen actual</h5>
-        <img class="edit-image" src="../../../img/recipes/{{ $recipe->id }}.jpg">
-      </div>
-    @endif
+    <div class="section no-overflow-section">
+      <h5>Imagen actual</h5>
+      <img class="edit-image" src="../../../img/recipes/{{ $recipe->id }}.jpg">
+    </div>
     <div class="section no-overflow-section">
       <h5>Cambiar imagen</h5>
       <div class="file-field input-field">

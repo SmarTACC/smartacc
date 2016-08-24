@@ -9,12 +9,6 @@
     </div>
     <div class="divider"></div>
     <div class="section">
-      <h5>Imagen</h5>
-      <p>{{ $recipe }}</p>
-      <img src="{{ $recipe->image }}" width="250px" height="250px">
-    </div>
-    <div class="divider"></div>
-    <div class="section">
       <h5>Preparación</h5>
       <p>{{ $recipe->description }}</p>
     </div>
@@ -37,12 +31,10 @@
       @endforeach
     </div>
     <div class="divider"></div>
-    @if (file_exists(public_path('img/recipes/' . $recipe->id . '.jpg')))
-      <div class="section">
-        <h5>Imagen</h5>
-        <img class="show-image" src="../../img/recipes/{{ $recipe->id }}.jpg">
-      </div>
-    @endif
+    <div class="section">
+      <h5>Imagen</h5>
+      <img class="show-image" src="../../img/recipes/{{ $recipe->id }}.jpg">
+    </div>
     <div class="divider"></div>
     <div class="section">
       <h5>Acciones</h5>
