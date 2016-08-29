@@ -117,6 +117,14 @@
         </div>
       </div>
     </div>
+    <div class="section">
+      <h5>Calorias</h5>
+      {!! Form::number('calories', $recipe->calories) !!}
+    </div>
+    <div class="section">
+      <h5>Porciones</h5>
+      {!! Form::number('portions', $recipe->portions) !!}
+    </div>
     <a class="btn btn-link pull-right" href="{{ route('panel.recipes.index') }}">
       <i class="material-icons left">arrow_back</i>
       Volver

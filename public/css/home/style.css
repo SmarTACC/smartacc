@@ -92,8 +92,8 @@ label {
 #recipe-container {
   text-align: left;
   height: auto;
-  width: 50%;
-  margin-left: 25%;
+  width: 60%;
+  margin-left: 20%;
   overflow: auto;
   padding-bottom: 10%;
 }
@@ -115,6 +115,10 @@ label {
   #credits-container {
     margin: 20px 8% 20px 8%;
     width: 84%;
+  }
+  #recipe-container {
+    width: 90%;
+    margin-left:5%;
   }
 }
 

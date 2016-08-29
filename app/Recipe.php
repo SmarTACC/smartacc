@@ -10,7 +10,7 @@ class Recipe extends Model
   use SoftDeletes;
 
   protected $fillable = [
-    'description', 'image', 'name', 'preparationTime', 'score'
+    'description', 'image', 'name', 'preparationTime', 'score', 'calories', 'portions'
   ];
 
   public function ingredients() {

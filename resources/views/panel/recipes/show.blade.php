@@ -35,6 +35,20 @@
       <h5>Imagen</h5>
       <img class="show-image" src="../../img/recipes/{{ $recipe->id }}.jpg">
     </div>
+    @if ($recipe->calories)
+      <div class="divider"></div>
+      <div class="section">
+        <h5>Calorias</h5>
+        <p>{{ $recipe->calories }}</p>
+      </div>
+    @endif
+    @if ($recipe->portions)
+      <div class="divider"></div>
+      <div class="section">
+        <h5>Porciones</h5>
+        <p>{{ $recipe->portions }}</p>
+      </div>
+    @endif
     <div class="divider"></div>
     <div class="section">
       <h5>Acciones</h5>
