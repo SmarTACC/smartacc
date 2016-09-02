@@ -10,7 +10,7 @@
     <div class="divider"></div>
     <div class="section">
       <h5>Preparación</h5>
-      <p>{{ $recipe->description }}</p>
+      <p>{!! str_replace("\n", "<br />", $recipe->description) !!}</p>
     </div>
     <div class="divider"></div>
     <div class="section">
@@ -47,6 +47,14 @@
       <div class="section">
         <h5>Porciones</h5>
         <p>{{ $recipe->portions }}</p>
+      </div>
+    @endif
+    @if ($recipe->youtube_url)
+      <div class="divider"></div>
+      <div class="section">
+        <h5>Video de youtube</h5>
+        <iframe style="width: 100%; height: 550px" frameborder="0" src="https://www.youtube.com/embed/{{ $recipe->youtube_url }}"  allowfullscreen>
+        </iframe>
       </div>
     @endif
     <div class="divider"></div>

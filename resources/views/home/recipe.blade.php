@@ -25,6 +25,14 @@
       <span class="card-title" id="recipe-title">{{ $recipe->name }} </span>
     </div>
     <div class="card-content">
+      @if ($recipe->portions)
+        <p class="recipe-subtitle">Porciones: {{ $recipe->portions }}</p>
+        <br>
+      @endif
+      @if ($recipe->calories)
+        <p class="recipe-subtitle">Calorías por porción: {{ $recipe->calories }}</p>
+        <br>
+      @endif
       <p class="recipe-subtitle">Ingredientes:</p>
       @if ($ingredients->count() > 0)
         @foreach($ingredients as $ingredient)
@@ -40,19 +48,25 @@
         </div>
       </div>
       <br>
-      <p class="recipe-subtitle">Categorías:</p>
       @if ($tags->count() > 0)
+        <p class="recipe-subtitle">Categorías:</p>
         @foreach($tags as $tag)
           <p class="recipe-text">• {{ $tag->name }}</p>
         @endforeach
       @endif
       <br>
       <p class="recipe-subtitle">Preparación:</p>
-      <p class="recipe-text">{{ $recipe->description }}</p>
+      <p class="recipe-text">{!! str_replace("\n", "<br />", $recipe->description) !!}</p>
+      @if ($recipe->youtube_url)
+        <br>
+        <p class="recipe-subtitle">Video de la preparación:</p>
+        <iframe style="width: 100%; height: 400px" frameborder="0" src="https://www.youtube.com/embed/{{ $recipe->youtube_url }}"  allowfullscreen>
+        </iframe>
+      @endif
     </div>
     <div class="card-action">
      <!-- <a class="fb-share-button"-->
-		   <!-- data-href="{{ //todo }}"-->
+		   <!-- data-href=""-->
 		   <!-- data-layout="button_count">-->
 	    <!--</div>-->
      <!-- <a href="#">Puntuar!</a>-->

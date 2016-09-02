@@ -15,6 +15,7 @@ class AddCaloriesPortionsToRecipesTable extends Migration
         Schema::table('recipes', function (Blueprint $table) {
             $table->integer('calories')->nullable();
             $table->float('portions')->nullable();
+            $table->text('youtube_url')->nullable();
         });
     }
 
@@ -28,6 +29,7 @@ class AddCaloriesPortionsToRecipesTable extends Migration
         Schema::table('recipes', function (Blueprint $table) {
             $table->dropColumn('calories');
             $table->dropColumn('portions');
+            $table->dropColumn('youtube_url');
         });
     }
 }

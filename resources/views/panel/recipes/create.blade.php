@@ -86,6 +86,10 @@
       <h5>Porciones</h5>
       {!! Form::number('portions') !!}
     </div>
+    <div class="section">
+      <h5>Url de youtube (poner solo el código, por ejemplo si el video fuera https://www.youtube.com/watch?v=GRxofEmo3HA, poner GRxofEmo3HA)</h5>
+      {!! Form::text('youtube_url') !!}
+    </div>
     <a class="btn btn-link pull-right" href="{{ route('panel.ingredients.index') }}">
       <i class="material-icons left">arrow_back</i>
       Volver
