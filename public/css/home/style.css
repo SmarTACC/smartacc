@@ -1,3 +1,10 @@
+/* Social Media Buttons Alignment */
+#___plusone_0[style],
+.twitter-share-button[style],
+.fb_iframe_widget span {
+  vertical-align: text-bottom !important;
+}
+
 /* general */
 
 body {

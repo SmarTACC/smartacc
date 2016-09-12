@@ -26,5 +26,13 @@ class Kernel extends ConsoleKernel
   {
     // $schedule->command('inspire')
     //      ->hourly();
+      $schedule->exec('./vendor/bin/phpunit')
+               ->daily()
+               ->withoutOverlapping();
+      $schedule->exec('./vendor/bin/phpunit')
+               ->daily()
+               ->sendOutputTo("/output")
+               ->emailOutputTo("smartacc@gmail.com")
+               ->withoutOverlapping();
   }
 }

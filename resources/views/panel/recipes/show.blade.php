@@ -23,10 +23,21 @@
     <div class="section">
       <h5>Ingredientes</h5>
       @foreach($recipeIngredients as $recipeIngredient)
-        @if ($recipeIngredient->amount == 1)
-          {{ $recipeIngredient->amount }} <a href="{{ route('panel.units.show', $recipeIngredient->unit->id) }}">{{ $recipeIngredient->unit->singular_name }}</a> de <a href="{{ route('panel.ingredients.show', $recipeIngredient->ingredient->id) }}">{{ $recipeIngredient->ingredient->name }}</a><br>
+        @if (is_object($recipeIngredient->ingredient))
+          @if ($recipeIngredient->amount == 1)
+            {{ $recipeIngredient->amount }} <a href="{{ route('panel.units.show', $recipeIngredient->unit->id) }}">{{ $recipeIngredient->unit->singular_name }}</a> de <a href="{{ route('panel.ingredients.show', $recipeIngredient->ingredient->id) }}">{{ $recipeIngredient->ingredient->name }}</a><br>
+          @else
+            {{ $recipeIngredient->amount }} <a href="{{ route('panel.units.show', $recipeIngredient->unit->id) }}">{{ $recipeIngredient->unit->plural_name }}</a> de <a href="{{ route('panel.ingredients.show', $recipeIngredient->ingredient->id) }}">{{ $recipeIngredient->ingredient->name }}</a><br>
+          @endif
         @else
-          {{ $recipeIngredient->amount }} <a href="{{ route('panel.units.show', $recipeIngredient->unit->id) }}">{{ $recipeIngredient->unit->plural_name }}</a> de <a href="{{ route('panel.ingredients.show', $recipeIngredient->ingredient->id) }}">{{ $recipeIngredient->ingredient->name }}</a><br>
+          <div class="card-panel red darken-2 white-text text-darken-2" style="font-size: 1em;">
+            <div class="row">
+              <div class="col s1">
+                <i class="material-icons">report_problem</i>
+              </div>
+              <div class="col s11">Uno de los ingredientes de esta receta ha sido borrado!!!</div>
+              </div>
+          </div>
         @endif
       @endforeach
     </div>

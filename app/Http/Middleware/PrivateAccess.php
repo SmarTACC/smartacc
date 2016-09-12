@@ -13,9 +13,8 @@ class PrivateAccess {
      * @return mixed
      */
     public function handle($request, Closure $next) {
-        $cookiename = "cookiemonster";
-        $cookievalue = "cookiesaredelicious";
-        if ($cookievalue == $request->cookie($cookiename)) {
+        if (env("PRIVATE_ACCESS_COOKIE_ADMIN_VALUE") == $request->cookie(env("PRIVATE_ACCESS_COOKIE_NAME"))
+        ||  env("PRIVATE_ACCESS_COOKIE_USER_VALUE") == $request->cookie(env("PRIVATE_ACCESS_COOKIE_NAME"))) {
             return $next($request);
         }
         return redirect('/privateaccess');

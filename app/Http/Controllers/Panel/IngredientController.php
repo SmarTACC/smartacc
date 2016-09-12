@@ -57,6 +57,12 @@ class IngredientController extends Controller
 
   public function destroy($id)
   {
+
+    if (!($request->cookie(env("PRIVATE_ACCESS_COOKIE_NAME")) == env("PRIVATE_ACCESS_COOKIE_ADMIN_VALUE"))) {
+		  $url = '/panel/prohibitedaction/'.str_replace("/", "%20", $request->url());
+		  return redirect($url);
+    }
+
 		$ingredient = Ingredient::findOrFail($id);
 		$ingredient->delete();
 

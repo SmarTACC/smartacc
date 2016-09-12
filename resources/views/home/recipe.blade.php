@@ -4,7 +4,7 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1721357034795774',
+      appId      : '{{ env("FB_APP_ID") }}',
       xfbml      : true,
       version    : 'v2.7'
     });
@@ -18,6 +18,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <div class= "center-align">
   <div class="card large" id="recipe-container">
     <div class="card-image">
@@ -25,38 +26,86 @@
       <span class="card-title" id="recipe-title">{{ $recipe->name }} </span>
     </div>
     <div class="card-content">
-      @if ($recipe->portions)
-        <p class="recipe-subtitle">Porciones: {{ $recipe->portions }}</p>
-        <br>
-      @endif
-      @if ($recipe->calories)
-        <p class="recipe-subtitle">Calorías por porción: {{ $recipe->calories }}</p>
-        <br>
-      @endif
-      <p class="recipe-subtitle">Ingredientes:</p>
-      @if ($ingredients->count() > 0)
-        @foreach($ingredients as $ingredient)
-          <p class="recipe-text">• {{ $ingredient->name }}</p>
-        @endforeach
+      <div class="recipe-share-area" style="text-align:center;">
+          <a class="fb-like"
+             data-href="{{ Request::url() }}"
+             data-layout="button"
+             data-action="like"
+             data-size="small"
+             data-show-faces="false"
+             data-share="true"><a>
+          <a class="g-plusone"
+             data-size="medium"
+             data-annotation="none"
+             data-href="{{ Request::url() }}"></a>
+          <script type="text/javascript">
+            window.___gcfg = {lang: 'es-419'};
+            (function() {
+              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+              po.src = 'https://apis.google.com/js/platform.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+          </script>
+          <a href="https://twitter.com/share"
+             class="twitter-share-button"
+             data-via="SmarTACC_ORT"
+             data-hashtags="singluten"
+             data-show-count="false"
+             data-url="{{ Request::url() }}"
+             data-text="Una receta de {{ $recipe->name }} libre de gluten!">Tweet</a>
+          <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+      @if ($recipe->portions || $recipe->calories)
+        <ul class="collection">
+        @if ($recipe->portions)
+          <li class="collection-item recipe-text">Porciones: {{ $recipe->portions }}</li>
+        @endif
+        @if ($recipe->calories)
+          <li class="collection-item recipe-text">Calorías por porción: {{ $recipe->calories }} Kcal</li>
+        @endif
+        </ul>
       @endif
       <div class="card-panel yellow darken-2 white-text text-darken-2" style="font-size: 1em;">
         <div class="row">
           <div class="col s1">
             <i class="material-icons">report_problem</i>
           </div>
-          <div class="col s11">Importante! Recuerde siempre utilizar productos certificados por organizaciones oficiales de la salud como Aligmentos Libres de Gluten (ALGs). <a href="http://www.anmat.gov.ar/Enfermedad_Celiaca/principal.asp" target="_blank">Mas info</a>.</div>
+          <div class="col s11">Importante! Recuerde siempre utilizar productos certificados por organizaciones oficiales de la salud como Alimentos Libres de Gluten (ALGs). <a href="http://www.anmat.gov.ar/Enfermedad_Celiaca/principal.asp" target="_blank">Mas info</a>.</div>
         </div>
       </div>
-      <br>
+      @if ($ingredients->count() > 0)
+        <ul class="collection with-header">
+          <li class="collection-header recipe-subtitle">Ingredientes:</li>
+          @foreach($ingredients as $ingredient)
+            @if (is_object($ingredient->ingredient))
+                <li class="collection-item recipe-text">
+              @if ($ingredient->amount == 1)
+                {{ $ingredient->amount }} {{ $ingredient->unit->singular_name }} de {{ $ingredient->ingredient->name }}
+              @elseif ($ingredient->amount == 0)
+                {{ $ingredient->unit->singular_name }} de {{ $ingredient->ingredient->name }}
+              @else
+                {{ $ingredient->amount }} {{ $ingredient->unit->plural_name }} de {{ $ingredient->ingredient->name }}
+              @endif
+                </li>
+            @endif
+          @endforeach
+        </ul>
+      @endif
       @if ($tags->count() > 0)
-        <p class="recipe-subtitle">Categorías:</p>
-        @foreach($tags as $tag)
-          <p class="recipe-text">• {{ $tag->name }}</p>
-        @endforeach
+        <ul class="collection with-header">
+          <li class="collection-header recipe-subtitle">Categorías:</li>
+          @foreach($tags as $tag)
+            @if (is_object($tag))
+              <li class="collection-item recipe-text">{{ $tag->name }}</li>
+            @endif
+          @endforeach
+        </ul>
       @endif
       <br>
-      <p class="recipe-subtitle">Preparación:</p>
-      <p class="recipe-text">{!! str_replace("\n", "<br />", $recipe->description) !!}</p>
+      <ul class="collection with-header">
+        <li class="collection-header recipe-subtitle">Preparación:</li>
+        <li class="collection-item recipe-text">{!! str_replace("\n", "<br />", $recipe->description) !!}</li>
+      </ul>
       @if ($recipe->youtube_url)
         <br>
         <p class="recipe-subtitle">Video de la preparación:</p>
@@ -65,10 +114,6 @@
       @endif
     </div>
     <div class="card-action">
-     <!-- <a class="fb-share-button"-->
-		   <!-- data-href=""-->
-		   <!-- data-layout="button_count">-->
-	    <!--</div>-->
      <!-- <a href="#">Puntuar!</a>-->
     </div>
     <!--<p class="recipe-subtitle">Puntuación:</p>-->
@@ -97,5 +142,5 @@
 <meta property="og:description"        content="" />
 <meta property="og:image"              content="" />
 <meta property="og:site_name"          content="SmarTACC" />
-<meta property="fb:app_id"             content="1721357034795774" />
+<meta property="fb:app_id"             content="{{ env('FB_APP_ID') }}" />
 @endsection

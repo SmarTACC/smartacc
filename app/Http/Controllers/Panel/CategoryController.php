@@ -64,11 +64,14 @@ class CategoryController extends Controller
     return redirect()->route('panel.categories.show', $id);
 	}
 
-  public function destroy($id)
+  public function destroy(Request $request, $id)
   {
+    if (!($request->cookie(env("PRIVATE_ACCESS_COOKIE_NAME")) == env("PRIVATE_ACCESS_COOKIE_ADMIN_VALUE"))) {
+		  $url = '/panel/prohibitedaction/'.str_replace("/", "%20", $request->url());
+		  return redirect($url);
+    }
 		$category = Category::findOrFail($id);
-		$category->delete();
-
-		return redirect()->route('panel.categories.index');
+  	$category->delete();
+	  return redirect()->route('panel.categories.index');
 	}
 }

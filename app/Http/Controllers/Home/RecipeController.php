@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Place;
 use App\Ingredient;
+use App\RecipeIngredient;
 use App\Tag;
 use App\Recipe;
 use App\Category;
@@ -28,7 +29,7 @@ class RecipeController extends Controller
   public function show($id, $type) {
     $recipe = Recipe::findOrFail($id);
     $tags = $recipe->tags;
-    $ingredients = $recipe->ingredients;
+    $ingredients = RecipeIngredient::where('recipe_id', $recipe->id)->get();
     $user = Auth::user();
     if($user)
   			$rating = RatingsRecipe::where('recipe_id', $recipe->id)->where('user_id', $user->id)->first();

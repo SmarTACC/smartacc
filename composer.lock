@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "32d8c7ab6539030270dec8833e9caca5",
-    "content-hash": "fbb7b12dc8a2acc781f54cc5db916f23",
+    "hash": "9a827289a0ec0c4b1380a01c98413423",
+    "content-hash": "add45864d5bd82d6733f821ce801d991",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -434,7 +434,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/22088b04728a039bd1fc32f7e79a89a118b78698",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/4064a980324f6c3bfa2bd981dfb247afa705ec3c",
                 "reference": "22088b04728a039bd1fc32f7e79a89a118b78698",
                 "shasum": ""
             },

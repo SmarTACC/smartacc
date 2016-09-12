@@ -17,6 +17,8 @@
   <div class="credits-text-block">
     <p>Aporte de Datos</p>
     <p>Melissa Chab</p>
+    <p>Maia Cheb Terrab</p>
+    <p>Carolina Rovner</p>
     <p>Alumnos de la Escuela ORT Argentina</p>
   </div>
   <div id="credits-container-images">
