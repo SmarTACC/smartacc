@@ -104,6 +104,6 @@
 
 @section('scripts')
 <script>$('#tagTokenize').tokenize();</script>
-<script>$('#ingredientTokenize').tokenize({'maxElements': 1});</script>
-<script>$('#unitTokenize').tokenize({'maxElements': 1});</script>
+<script>$('#ingredientTokenize').tokenize({'maxElements': 1, 'newElements': false});</script>
+<script>$('#unitTokenize').tokenize({'maxElements': 1, 'newElements': false});</script>
 @endsection

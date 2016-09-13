@@ -6,9 +6,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
     <meta name="viewport" content="width=device-width" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css"/>
-    {!! Html::style('css/home/style.css', [], true) !!}
+    {!! Html::style('http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css', [], false) !!}
+    {!! Html::style('http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css', [], false) !!}
+    {!! Html::style('css/home/style.css', [], env("SECURE_LOADING")) !!}
     @yield('head')
   </head>
   <body>
@@ -102,11 +102,11 @@
       </div>
     @endif
     @yield('content')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4.0.0/dist/masonry.pkgd.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    {!! Html::script('js/home/main.js', array(), true) !!}
+    {!! Html::script("https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js", [], env("SECURE_LOADING")) !!}
+    {!! Html::script("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js", [], env("SECURE_LOADING")) !!}
+    {!! Html::script("https://unpkg.com/masonry-layout@4.0.0/dist/masonry.pkgd.min.js", [], env("SECURE_LOADING")) !!}
+    {!! Html::script("https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false", [], env("SECURE_LOADING")) !!}
+    {!! Html::script('js/home/main.js', array(), env("SECURE_LOADING")) !!}
     @yield('scripts')
     <script>
       $(".button-collapse").sideNav();

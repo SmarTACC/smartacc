@@ -27,7 +27,12 @@ class Kernel extends ConsoleKernel
     // $schedule->command('inspire')
     //      ->hourly();
       $schedule->exec('./vendor/bin/phpunit')
-               ->daily()
+               ->dailyAt("06:25")
+               ->after(function () {
+                          env("TEST_SUCCESSFULL", "FALSE");
+                          env("LAST_TEST_TIME", date("Y-m-d"));
+                          config('tests.test_result', true);
+               })
                ->withoutOverlapping();
       $schedule->exec('./vendor/bin/phpunit')
                ->daily()

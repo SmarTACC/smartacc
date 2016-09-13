@@ -143,8 +143,8 @@
 
 @section('scripts')
 <script>$('#tagTokenize').tokenize();</script>
-<script>$('#ingredientTokenize').tokenize({'maxElements': 1});</script>
-<script>$('#unitTokenize').tokenize({'maxElements': 1});</script>
+<script>$('#ingredientTokenize').tokenize({'maxElements': 1, 'newElements': false});</script>
+<script>$('#unitTokenize').tokenize({'maxElements': 1, 'newElements': false});</script>
 @foreach ($recipeIngredients as $recipeIngredient)
   <script>
     addValue('{{ $recipeIngredient->amount }}', '{{ $recipeIngredient->ingredient->id }}', '{{ $recipeIngredient->unit->id }}');

@@ -99,7 +99,7 @@ class RecipeController extends Controller
     return redirect()->route('panel.recipes.show', $id);
   }
 
-  public function destroy($id)
+  public function destroy(Request $request, $id)
   {
 
     if (!($request->cookie(env("PRIVATE_ACCESS_COOKIE_NAME")) == env("PRIVATE_ACCESS_COOKIE_ADMIN_VALUE"))) {
