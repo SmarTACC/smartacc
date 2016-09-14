@@ -33,7 +33,7 @@
     @yield('content')
     {!! Html::script("https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js", [], env("SECURE_LOADING")) !!}
     {!! Html::script("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js", [], env("SECURE_LOADING")) !!}
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHDx5pEAwyWW_OZgBEKVowirfLkVemQSM&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap" async defer></script>
     <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>-->
     {!! Html::script('js/panel/jquery.tokenize.js', array(), env("SECURE_LOADING")) !!}
     {!! Html::script('js/panel/main.js', array(), env("SECURE_LOADING")) !!}

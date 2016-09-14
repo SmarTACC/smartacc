@@ -58,7 +58,7 @@
           <!--
             <a href="{{ route('auth.login.general') }}" class="{{ $displayTitle }} {{ $displayNavLogin }} no-display" id="login-li"><i class="material-icons">person</i></a>
           -->
-          <a href="creditos" class="{{ $displayTitle }} no-display" id="credits-li"><i class="material-icons">assignment</i></a>
+          <a href="credits" class="{{ $displayTitle }} no-display" id="credits-li"><i class="material-icons">assignment</i></a>
           <div class="{{ $displayNavCredits }} nav-other-titles" id="nav-credits">
             <a href="{{ route('recipes.index') }}" class="back-button" id="nav-credits-back-button"><i class="material-icons">arrow_back</i></a>
             <a class="nav-subtitle" id="nav-credits-title">Créditos y sugerencias</a>
@@ -105,7 +105,7 @@
     {!! Html::script("https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js", [], env("SECURE_LOADING")) !!}
     {!! Html::script("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js", [], env("SECURE_LOADING")) !!}
     {!! Html::script("https://unpkg.com/masonry-layout@4.0.0/dist/masonry.pkgd.min.js", [], env("SECURE_LOADING")) !!}
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHDx5pEAwyWW_OZgBEKVowirfLkVemQSM&callback=initialize" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initialize" async defer></script>
     <!-- <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" async defer></script>-->
     {!! Html::script('js/home/main.js', array(), env("SECURE_LOADING")) !!}
     @yield('scripts')

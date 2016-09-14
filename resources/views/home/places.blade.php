@@ -35,6 +35,7 @@
       setLocation('{{ json_encode($places) }}');
     });
   </script>
+
 @else
   <p>No hay lugares cargados</p>
 @endif
