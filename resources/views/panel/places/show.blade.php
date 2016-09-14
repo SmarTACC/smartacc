@@ -46,5 +46,8 @@
       {!! Form::close() !!}
     </div>
   </div>
-  <script>initMapShow('{{ $place->name }}','{{ $place->address }}','{{ $place->description }}','{{ $place->category_id }}','{{ $place->lat }}','{{ $place->lon }}');</script>
+@endsection
+
+@section('scripts')
+<script>initMapShow('{{ $place->name }}','{{ $place->address }}','{{ $place->description }}','{{ $place->category_id }}','{{ $place->lat }}','{{ $place->lon }}');</script>
 @endsection

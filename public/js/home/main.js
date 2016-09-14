@@ -15,7 +15,6 @@ var tagsArray;
 var ingredients = [];
 var ingredientsArray;
 
-
 /* places */
 
 function decodeEntities(encodedString) {
@@ -40,7 +39,7 @@ function setLocation(places) {
       },
       rating: place.rating,
       category: place.category_id,
-      content: "Nombre: " + place.name + "<br>Dirección: " + place.address + "<br>Descripción: " + place.description //+ "<br>Puntuación: " + place.rating
+      content: "<div style='background: orange; border-radius: 5px; padding: 5px; max-width:250px; text-ligncolor: white;'><i class='tiny material-icons'>warning</i>Importante! Este local afirma ser libre de gluten, pero no ha sido verificado por ninguna organizacion reconocida.</div>Nombre: " + place.name + "<br>Dirección: " + place.address + "<br>Descripción: " + place.description //+ "<br>Puntuación: " + place.rating
     }]
     markers.push(marker);
     if (i + 1 == places.length) {
@@ -70,7 +69,7 @@ function initialize() {
 
     var image = {
       url: 'img/categories/' + category + '.png',
-      scaledSize: new google.maps.Size(38, 38),
+      scaledSize: new google.maps.Size(30, 52),
     };
 
     marker = new google.maps.Marker({

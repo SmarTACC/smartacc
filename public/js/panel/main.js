@@ -15,6 +15,10 @@ window.onmousedown = function(e) {
   }
 }
 
+var gmaploaded = false;
+var mapname, mapaddress, mapdesc, mapcat, maplat, maplng;
+var isShow = false;
+
 function confirmAction() {
   return confirm('¿Estás seguro que querés eliminarlo de forma permanente?');
 }
@@ -22,39 +26,49 @@ function confirmAction() {
 /* places */
 
 function initMapShow(name, address, description, category, lat, lng) {
-  var myLatLng = {
-    lat: parseFloat(lat),
-    lng: parseFloat(lng)
-  };
+  isShow = true;
+  if (gmaploaded) {
+    var myLatLng = {
+      lat: parseFloat(lat),
+      lng: parseFloat(lng)
+    };
 
-  var content = "Nombre: " + name + "<br>Dirección: " + address + "<br>Descripción: " + description + " ";
+    var content = "Nombre: " + name + "<br>Dirección: " + address + "<br>Descripción: " + description + " ";
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: myLatLng,
-    zoom: 11
-  });
-
-  var image = {
-    url: '../../img/categories/' + category + '.png',
-    scaledSize: new google.maps.Size(38, 38),
-  };
-
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    icon: image
-  });
-
-  marker.infowindow = new google.maps.InfoWindow({
-    content: content
-  });
-
-  (function(marker, content) {
-    google.maps.event.addListener(marker, 'click', function() {
-      marker.infowindow.open(map, marker);
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLng,
+      zoom: 11
     });
-  })
-  (marker, content);
+
+    var image = {
+      url: '../../img/categories/' + category + '.png',
+      scaledSize: new google.maps.Size(30, 52),
+    };
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      icon: image
+    });
+
+    marker.infowindow = new google.maps.InfoWindow({
+      content: content
+    });
+
+    (function(marker, content) {
+      google.maps.event.addListener(marker, 'click', function() {
+        marker.infowindow.open(map, marker);
+      });
+    })
+    (marker, content);
+  } else {
+    mapname = name;
+    mapdesc = description;
+    mapaddress = address;
+    maplat = lat;
+    maplng = lng;
+    mapcat = category;
+  }
 }
 
 function setLocationShow() {
@@ -96,28 +110,34 @@ function geocodeResult(results, status) {
 }
 
 function setLocationEdit(lat, lng) {
-  lat = parseFloat(lat);
-  lng = parseFloat(lng);
-  var myLatLng = {
-    lat: lat,
-    lng: lng
-  };
-  var map = new google.maps.Map($("#map").get(0), {
-    center: myLatLng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    zoom: 11
-  });
-  var myCoordsLenght = 6;
-  var markerOptions = {
-    position: myLatLng,
-    draggable: true
+  isShow = false;
+  if (gmaploaded) {
+    lat = parseFloat(lat);
+    lng = parseFloat(lng);
+    var myLatLng = {
+      lat: lat,
+      lng: lng
+    };
+    var map = new google.maps.Map($("#map").get(0), {
+      center: myLatLng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      zoom: 11
+    });
+    var myCoordsLenght = 6;
+    var markerOptions = {
+      position: myLatLng,
+      draggable: true
+    }
+    var marker = new google.maps.Marker(markerOptions);
+    writeLocation(lat, lng);
+    marker.setMap(map);
+    google.maps.event.addListener(marker, 'dragend', function(evt) {
+      writeLocation(evt.latLng.lat().toFixed(myCoordsLenght), evt.latLng.lng().toFixed(myCoordsLenght));
+    });
+  } else {
+    maplat = lat;
+    maplng = lng;
   }
-  var marker = new google.maps.Marker(markerOptions);
-  writeLocation(lat, lng);
-  marker.setMap(map);
-  google.maps.event.addListener(marker, 'dragend', function(evt) {
-    writeLocation(evt.latLng.lat().toFixed(myCoordsLenght), evt.latLng.lng().toFixed(myCoordsLenght));
-  });
 }
 
 function writeLocation(lat, lng) {
@@ -174,3 +194,16 @@ $(document).ready(function() {
     }
   });
 });
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: -54},
+    zoom: 8
+  });
+  gmaploaded = true;
+  if (isShow) {
+    initMapShow(mapname, mapaddress, mapdesc, mapcat, maplat, maplng);
+  } else {
+    setLocationEdit(maplat, maplng);
+  }
+}

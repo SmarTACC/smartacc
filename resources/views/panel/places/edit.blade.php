@@ -40,5 +40,8 @@
     </button>
   {!! Form::close() !!}
 </div>
+@endsection
+
+@section('scripts')
 <script>setLocationEdit('{{ $place->lat }}','{{ $place->lon }}');</script>
 @endsection

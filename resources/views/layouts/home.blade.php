@@ -6,8 +6,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
     <meta name="viewport" content="width=device-width" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    {!! Html::style('http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css', [], false) !!}
-    {!! Html::style('http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css', [], false) !!}
+    {!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css', [], false) !!}
+    {!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css', [], false) !!}
     {!! Html::style('css/home/style.css', [], env("SECURE_LOADING")) !!}
     @yield('head')
   </head>
@@ -105,7 +105,8 @@
     {!! Html::script("https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js", [], env("SECURE_LOADING")) !!}
     {!! Html::script("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js", [], env("SECURE_LOADING")) !!}
     {!! Html::script("https://unpkg.com/masonry-layout@4.0.0/dist/masonry.pkgd.min.js", [], env("SECURE_LOADING")) !!}
-    {!! Html::script("https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false", [], env("SECURE_LOADING")) !!}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHDx5pEAwyWW_OZgBEKVowirfLkVemQSM&callback=initialize" async defer></script>
+    <!-- <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" async defer></script>-->
     {!! Html::script('js/home/main.js', array(), env("SECURE_LOADING")) !!}
     @yield('scripts')
     <script>
