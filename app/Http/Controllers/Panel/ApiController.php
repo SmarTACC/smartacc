@@ -23,7 +23,7 @@ class ApiController extends Controller
       return Recipe::orderBy('name', 'asc')->get();
     }
     else {
-      $date = Carbon::now();
+      $date = Carbon::parse($date);
       return Recipe::whereDate('created_at', '>=', $date)->orWhereDate('updated_at', '>=', $date)->orWhereDate('deleted_at', '>=', $date)->orderBy('name', 'asc')->get();
     }
   }
