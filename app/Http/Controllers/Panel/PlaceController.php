@@ -38,7 +38,11 @@ class PlaceController extends Controller
 
   public function store(PlaceRequest $request)
   {
-    $place = Place::create($request->all());
+    $place = new Place($request->all());
+    $cat = Category::find($request->category_id);
+    $cat->places()->save($place);
+
+    //$place = Place::create($request->all());
 
 		return redirect()->route('panel.places.show', $place->id);
   }
