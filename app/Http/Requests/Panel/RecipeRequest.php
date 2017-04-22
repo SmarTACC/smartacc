@@ -25,7 +25,6 @@ class RecipeRequest extends Request
   {
     return [
       'name' => 'required',
-      'description' => 'required',
     ];
   }
 
@@ -33,7 +32,6 @@ class RecipeRequest extends Request
   {
     return [
       'name.required' => 'Se requiere un nombre',
-      'description.required' => 'Se requiere una descripción',
     ];
   }
 }
