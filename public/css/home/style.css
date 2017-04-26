@@ -555,3 +555,20 @@ label {
     margin-right: 5%;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .tab a {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .tab a {
+    font-size: 11px;
+  }
+}
+
+.card-content {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}

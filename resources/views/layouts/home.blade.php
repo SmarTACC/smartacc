@@ -16,10 +16,10 @@
       <nav>
         <div class="nav-wrapper">
           <?php
-            $displayTitle = $displayNavCredits = $displayNavSuggest = $displayNavRecipe = $displayNavSearch = $displayNavSearchList = $displayNavSearchRecipe = 'display';
-            $displayTabRecipes = $displayTabMap = $displayTabSearch = '';
+            $displayTitle = $displayNavCredits = $displayNavSuggest = $displayNavRecipe = $displayNavDone = $displayNavSearch = $displayNavSearchList = $displayNavSearchRecipe = 'display';
+            $displayTabRecipes = $displayTabDone = $displayTabMap = $displayTabSearch = '';
           ?>
-          @if ($section == 'credits' || $section == 'recipe' || $section == 'suggest' || $section == 'search-list' || $section == 'search-recipe')
+          @if ($section == 'credits' || $section == 'recipe' || $section == 'done-show' || $section == 'suggest' || $section == 'search-list' || $section == 'search-recipe')
             <?php $displayTitle = 'no-display-imp'; ?>
           @endif
           @if ($section != 'credits')
@@ -31,13 +31,19 @@
           @if ($section != 'recipe')
             <?php $displayNavRecipe = 'no-display-imp'; ?>
           @endif
+          @if ($section != 'done-show')
+            <?php $displayNavDone = 'no-display-imp'; ?>
+          @endif
           @if ($section != 'search-list')
             <?php $displayNavSearchList = 'no-display-imp'; ?>
           @endif
           @if ($section != 'search-recipe')
             <?php $displayNavSearchRecipe = 'no-display-imp'; ?>
           @endif
-          @if ($section == 'recipes')
+          @if ($section == 'done-index')
+            <?php $displayTabDone = 'active'; ?>
+          @endif
+          @if ($section == 'recipes' || $section == 'list')
             <?php $displayTabRecipes = 'active'; ?>
           @endif
           @if ($section == 'map')
@@ -71,6 +77,10 @@
             <a href="{{ route('recipes.index') }}" class="back-button" id="nav-recipe-back-button"><i class="material-icons">arrow_back</i></a>
             <a class="nav-subtitle" id="nav-recipe-title">Receta</a>
           </div>
+          <div class="{{ $displayNavDone }} nav-other-titles" id="nav-done">
+            <a href="{{ route('done.index') }}" class="back-button" id="nav-done-back-button"><i class="material-icons">arrow_back</i></a>
+            <a class="nav-subtitle" id="nav-done-title">Videos Listo</a>
+          </div>
           <div class="{{ $displayNavSearchList }} nav-other-titles" id="nav-search-list">
             <a href="{{ route('recipes.search') }}" class="back-button" id="nav-search-list-back-button"><i class="material-icons">arrow_back</i></a>
             <a class="nav-subtitle" id="nav-search-list-title">Búsqueda</a>
@@ -80,6 +90,7 @@
             <a class="nav-subtitle" id="nav-search-recipe-title">Receta</a>
           </div>
           <ul class="right hide-on-med-and-down navbar-buttons">
+            <li id="done-li"><a href="{{ route('done.index') }}">Videos Listo</a></li>
             <li id="index-li"><a href="{{ route('recipes.index') }}">Recetas</a></li>
             <li id="map-li"><a href="{{ route('places.index') }}">Mapa</a></li>
             <li id="search-li"><a href="{{ route('recipes.search') }}">Búsqueda</a></li>
@@ -92,9 +103,10 @@
         </div>
       </nav>
     </div>
-    @if ($section == 'recipes' || $section == 'map' || $section == 'search' || $section == 'list')
+    @if ($section == 'recipes' || $section == 'done-index' || $section == 'map' || $section == 'search' || $section == 'list')
       <div class="col s12" id="tabs-container">
         <ul class="tabs" id="tabs">
+          <li class="tab col s4" onclick="location.href='{{ route('done.index') }}'"><a id="tabs-done" class="{{ $displayTabDone }}">Videos Listo</a></li>
           <li class="tab col s4" onclick="location.href='{{ route('recipes.index') }}'"><a id="tabs-recipes" class="{{ $displayTabRecipes }}">Recetas</a></li>
           <li class="tab col s4" onclick="location.href='{{ route('places.index') }}'"><a id="tabs-map" class="{{ $displayTabMap }}">Mapa</a></li>
           <li class="tab col s4" onclick="location.href='{{ route('recipes.search') }}'"><a id="tabs-search" class="{{ $displayTabSearch }}">Búsqueda</a></li>

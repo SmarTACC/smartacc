@@ -20,10 +20,31 @@ use App\Http\Controllers\Controller;
 class RecipeController extends Controller
 {
   public function index() {
-    $recipes = Recipe::orderBy('name', 'asc')->get();
+    $recipes = Recipe::where('youtube_url', NULL)->orWhere('youtube_url', '')->orderBy('name', 'asc')->get();
     $type = 'list';
 
     return view('home.recipes', compact('recipes','type'));
+  }
+
+  public function doneIndex() {
+    $recipes = Recipe::where('youtube_url', '!=', '')->whereNotNull('youtube_url')->orderBy('name', 'asc')->get();
+    $type = 'done-index';
+
+    return view('home.done.index', compact('recipes','type'));
+  }
+
+  public function doneShow($id, $type) {
+    $recipe = Recipe::findOrFail($id);
+    $tags = $recipe->tags;
+    $ingredients = RecipeIngredient::where('recipe_id', $recipe->id)->get();
+    $user = Auth::user();
+    if($user)
+  		$rating = RatingsRecipe::where('recipe_id', $recipe->id)->where('user_id', $user->id)->first();
+  	else
+      $rating = 0;
+    $type = 'done-show';
+
+    return view('home.done.show', compact('recipe', 'tags', 'ingredients', 'type', 'rating'));
   }
 
   public function show($id, $type) {
